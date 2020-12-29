@@ -22,6 +22,7 @@ import java.util.List;
  * @author ZiqiangLee
  * @since 2020-12-28
  */
+//@CrossOrigin
 @RestController
 @RequestMapping("/user")
 @Api(value = "系统用户模块",tags = "系统用户接口")
@@ -48,7 +49,7 @@ public class UserController {
     @GetMapping("/findUserList")
     @ApiOperation(value = "分页查询",notes = "查询所有用户，分页进行显示")
     public Result findUserList(@RequestParam(required = true,defaultValue = "1") Integer current,
-                               @RequestParam(required = true,defaultValue = "7")Integer size){
+                               @RequestParam(required = true,defaultValue = "5")Integer size){
         Page<User> page = new Page<>(current, size);
         Page<User> userPage = userService.page(page);
         long total = userPage.getTotal();
